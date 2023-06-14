@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../../../assest/normalize.css">
+    <title>Knight Rider</title>
+    <style>
+        #root {
+            position: absolute;
+            width: 900px;
+            height: 100px;
+            top: 35%;
+            left: 0;
+            right: 0;
+            margin: auto;
+            border: 1px solid black;
+        }
+
+        #b1 {
+            position: absolute;
+            height: 100%;
+            width: 180px;
+            left: 0;
+            margin: auto;
+            border: 1px solid black;
+        }
+
+        #b2 {
+            position: absolute;
+            height: 100%;
+            width: 180px;
+            left: 180px;
+            margin: auto;
+            border: 1px solid black;
+        }
+
+        #b3 {
+            position: absolute;
+            height: 100%;
+            width: 180px;
+            left: 360px;
+            margin: auto;
+            border: 1px solid black;
+        }
+
+        #b4 {
+            position: absolute;
+            height: 100%;
+            width: 180px;
+            left: 540px;
+            margin: auto;
+            border: 1px solid black;
+        }
+
+        #b5 {
+            position: absolute;
+            height: 100%;
+            width: 180px;
+            left: 720px;
+            margin: auto;
+            border: 1px solid black;
+        }
+
+        #btnstart {
+            position: absolute;
+            height: 40px;
+            width: 120px;
+            top: 50%;
+            left: 40%;
+            margin: auto;
+            background-color: blue;
+            border-radius: 20px;
+        }
+
+        #txtStart {
+            position: absolute;
+            top: 6px;
+            left: 40px;
+            margin: auto;
+            font-size: 20px;
+            color: #eeeeee;
+        }
+
+        #btnstop {
+            position: absolute;
+            height: 40px;
+            width: 120px;
+            top: 50%;
+            right: 40%;
+            margin: auto;
+            background-color: red;
+            border-radius: 20px;
+        }
+
+        #txtStop {
+            position: absolute;
+            top: 8px;
+            left: 40px;
+            margin: auto;
+            font-size: 20px;
+            color: #eeeeee;
+        }
+    </style>
+</head>
+<body>
+<section id="root">
+    <div id="b1"></div>
+    <div id="b2"></div>
+    <div id="b3"></div>
+    <div id="b4"></div>
+    <div id="b5"></div>
+</section>
+<button id="btnstop"><p id="txtStop">Stop</p></button>
+<button id="btnstart"><p id="txtStart">Start</p></button>
+
+<script>
+    let MyAudio=new Audio("Audio/Knight-Rider-Theme-Song.mp3");
+    let colors1 = ["white", "#f7dcdd", "#ff6e71", "#f72d31", "#ff0005"];
+    let x = 8;
+    let a = 0;
+    let b = 0;
+    let c = 0;
+    let d = 0;
+    let e = 0;
+    let y = -12;
+    let iv;
+    document.getElementById("btnstop").addEventListener("click", function () {
+        clearInterval(iv);
+        MyAudio.pause();
+    })
+    document.getElementById("btnstart").addEventListener("click", function () {
+        MyAudio.play();
+        iv = setInterval(function () {
+            if (x == -5) {
+                x = 20;
+            }
+            if (x == 7) {
+                a = 4;
+                b = 0;
+                c = 0;
+                d = 0;
+                e = 0;
+            }
+            if (x == 6) {
+                a = 3;
+                b = 4;
+                c = 0;
+                d = 0;
+                e = 0;
+            }
+            if (x == 5) {
+                a = 2;
+                b = 3;
+                c = 4;
+                d = 0;
+                e = 0;
+            }
+            if (x == 4) {
+                a = 1;
+                b = 2;
+                c = 3;
+                d = 4;
+                e = 0;
+            }
+            if (x == 3) {
+                a = 0;
+                b = 1;
+                c = 2;
+                d = 3;
+                e = 4;
+            }
+            if (x == 2) {
+                a = 0
+                b = 0;
+                c = 1;
+                d = 2;
+                e = 3;
+            }
+            if (x == 1) {
+                a = 0;
+                b = 0;
+                c = 0;
+                d = 1;
+                e = 2;
+            }
+            if (x == 0) {
+                a = 0;
+                b = 0;
+                c = 0;
+                d = 0;
+                e = 1;
+            }
+            if (x == -1) {
+                a = 0;
+                b = 0;
+                c = 0;
+                d = 0;
+                e = 0;
+            }
+            if (y == 1) {
+                a = 0;
+                b = 0;
+                c = 0;
+                d = 0;
+                e = 4;
+            }
+            if (y == 2) {
+                a = 0;
+                b = 0;
+                c = 0;
+                d = 4;
+                e = 3;
+            }
+            if (y == 3) {
+                a = 0;
+                b = 0;
+                c = 4;
+                d = 3;
+                e = 2;
+            }
+            if (y == 4) {
+                a = 0;
+                b = 4;
+                c = 3;
+                d = 2;
+                e = 1;
+            }
+            if (y == 5) {
+                a = 4;
+                b = 3;
+                c = 2;
+                d = 1;
+                e = 0;
+            }
+            if (y == 6) {
+                a = 3;
+                b = 2;
+                c = 1;
+                d = 0;
+                e = 0;
+            }
+            if (y == 7) {
+                a = 2;
+                b = 1;
+                c = 0;
+                d = 0;
+                e = 0;
+            }
+            if (y == 8) {
+                a = 1;
+                b = 0;
+                c = 0;
+                d = 0;
+                e = 0;
+            }
+            if (y == 9) {
+                a = 0;
+                b = 0;
+                c = 0;
+                d = 0;
+                e = 0;
+            }
+            if (y == 13) {
+                y = -12
+            }
+            let divArray = document.querySelector("section").children;
+            for (let i = 0; i < divArray.length; i++) {
+                divArray[0].style.background = colors1[a];
+                divArray[1].style.background = colors1[b];
+                divArray[2].style.background = colors1[c];
+                divArray[3].style.background = colors1[d];
+                divArray[4].style.background = colors1[e];
+            }
+            x--;
+            y++;
+        }, 100);
+    })
+</script>
+</body>
+</html>

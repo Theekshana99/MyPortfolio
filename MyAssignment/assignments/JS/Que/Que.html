@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Que</title>
+    <link rel="stylesheet" href="assets/css/bootstrap-reboot.min.css">
+    <style>
+        body{
+            background-color: #2b2f32;
+        }
+        section {
+            width: 1050px;
+            height: 320px;
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            top: 0;
+            margin: auto;
+            display: flex;
+            align-items: center;
+        }
+
+        section > div {
+            border: 1px solid green;
+            height: 100px;
+            flex-grow: 1;
+        }
+
+        section > div:first-child {
+            align-self: start;
+        }
+
+        section > div:last-child {
+            align-self: end;
+        }
+        body>:nth-child(2)>h2{
+            position: absolute;
+            color: #eeeeee;
+            font-size: 35px;
+            bottom: 400px;
+            left: 37%;
+            margin: auto;
+        }
+        body>:nth-child(3){
+            position: absolute;
+            width: 1050px;
+            height: 108px;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            left: 0;
+            margin: auto;
+        }
+        body>:nth-child(3)>:nth-child(1){
+            position: absolute;
+            bottom: 108px;
+            width: 1050px;
+            height: 0px;
+            border: 2px solid lightsteelblue;
+        }
+        body>:nth-child(3)>:nth-child(2){
+            position: absolute;
+            top: 108px;
+            width: 1050px;
+            height: 0px;
+            border: 2px solid lightsteelblue;
+        }
+    </style>
+</head>
+<body>
+
+<section>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+</section>
+<section>
+    <h2>Java Script Queue</h2>
+</section>
+<section>
+    <section></section>
+    <section></section>
+</section>
+
+<script>
+    let colors = ["deeppink","orange","red", "yellow", "green", "blue" ];
+    setInterval(function (){
+        let divArray=document.querySelector("section").children;
+        for (let i = 0; i < divArray.length; i++) {
+            divArray[i].style.background=colors[i];
+        }
+        let lv= colors.pop();
+        colors.unshift(lv);
+    },500);
+</script>
+</body>
+</html>

@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Calculator</title>
+    <link rel="stylesheet" href="../../../assest/normalize.css">
+
+    <style>
+        #background {
+            position: absolute;
+            width: 100vw;
+            height: 100vh;
+        }
+
+        #backgroundimage {
+            position: absolute;
+            width: 100vw;
+            height: 100vh;
+        }
+
+        #frame {
+            position: absolute;
+            width: 585px;
+            height: 60vh;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            margin: auto;
+            background-color: #373533;
+            border-radius: 5px;
+            opacity: 0.8;
+            border: 2px solid black;
+        }
+
+        #textArea {
+            position: absolute;
+            width: 80%;
+            height: 40px;
+            right: 20px;
+            top: 20px;
+            margin: auto;
+            background-color: #000000;
+            opacity: 0.9;
+            border: 1px solid black;
+            border-radius: 5px;
+        }
+
+        #text {
+            position: absolute;
+            right: 5px;
+            top: 0;
+            margin: auto;
+            color: #eeeeee;
+            font-size: 40px;
+            text-align: left;
+        }
+
+        /*button style start*/
+        #btnC {
+            position: absolute;
+            height: 40px;
+            width: 65px;
+            left: 20px;
+            top: 20px;
+            margin: auto;
+            border: none;
+            background-color: #ea868f;
+            box-shadow: 0 2px rgba(244, 157, 178, 0.50);
+            border-radius: 5px;
+            cursor: pointer;
+            font-family: revert;
+            font-size: 20px;
+            text-align: center;
+        }
+
+        #btn0 {
+            left: 20px;
+            bottom: 20px;
+
+        }
+
+        #btn1 {
+            left: 20px;
+            bottom: 110px;
+        }
+
+        #btn4 {
+            left: 20px;
+            bottom: 200px;
+        }
+
+        #btn7 {
+            left: 20px;
+            bottom: 290px;
+        }
+
+        #btndot {
+            left: 160px;
+            bottom: 20px;
+        }
+
+        #btnequal {
+            position: absolute;
+            height: 75px;
+            width: 125px;
+            left: 300px;
+            bottom: 20px;
+            margin: auto;
+            background-color: #28b3ff;
+            font-size: 30px;
+            cursor: pointer;
+            box-shadow: 0 2px rgba(0, 223, 255, 0.5);
+            border-radius: 5px;
+            border: none;
+        }
+
+        #btnmultiply {
+            left: 440px;
+            bottom: 20px;
+        }
+
+        #btn2 {
+            left: 160px;
+            bottom: 110px;
+        }
+
+        #btn3 {
+            left: 300px;
+            bottom: 110px;
+        }
+
+        #btn5 {
+            left: 160px;
+            bottom: 200px;
+        }
+
+        #btndivide {
+            left: 440px;
+            bottom: 110px;
+        }
+
+        #btn6 {
+            left: 300px;
+            bottom: 200px;
+        }
+
+        #btnminer {
+            left: 440px;
+            bottom: 200px;
+        }
+
+        #btn8 {
+            left: 160px;
+            bottom: 290px;
+        }
+
+        #btn9 {
+            left: 300px;
+            bottom: 290px;
+        }
+
+        #btnplus {
+            left: 440px;
+            bottom: 290px;
+        }
+
+        .numbers {
+            font-size: 20px;
+        }
+
+        .marks {
+            position: absolute;
+            height: 75px;
+            width: 125px;
+            margin: auto;
+            border: none;
+            background-color: #ff9500;
+            font-size: 30px;
+            font-family: revert;
+            cursor: pointer;
+            box-shadow: 0 2px rgba(244, 188, 0, 0.45);
+            border-radius: 5px;
+        }
+
+        .numbtn {
+            position: absolute;
+            height: 75px;
+            width: 125px;
+            margin: auto;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 2px #b8b2b8;
+            border-radius: 5px;
+        }
+
+        .numbtn:hover {
+            background-color: #32f0ff
+        }
+
+        .numbtn:active {
+            background-color: #32f0ff;
+            box-shadow: 0 1px #b8b2b8;
+            transform: translateY(3px);
+        }
+
+        .marks:hover {
+            background-color: #f4f024;
+        }
+
+        .marks:active {
+            background-color: #f4f024;
+            box-shadow: 0 1px #b8b2b8;
+            transform: translateY(3px);
+        }
+
+        #btnC:hover {
+            background-color: #f44b41;
+        }
+
+        #btnC:active {
+            background-color: #f44b41;
+            box-shadow: 0 1px rgba(244, 157, 178, 0.50);
+            transform: translateY(3px);
+        }
+
+        #btnequal:hover {
+            background-color: #3aff5a;
+        }
+
+        #btnequal:active {
+            background-color: #3aff5a;
+            box-shadow: 0 1px rgba(0, 223, 255, 0.5);
+            transform: translateY(3px);
+        }
+
+    </style>
+</head>
+<body>
+<section id="background"><img src="assets/images/CalBackground.jpg" id="backgroundimage">
+    <section id="frame">
+        <div id="textArea"><p id="text"></p></div>
+        <button id="btnC">c</button>
+        <button class="numbtn" id="btn0"><p class="numbers" id="0">0</p></button>
+        <button class="numbtn" id="btn1"><p class="numbers" id="1">1</p></button>
+        <button class="numbtn" id="btn2"><p class="numbers" id="2">2</p></button>
+        <button class="numbtn" id="btn3"><p class="numbers" id="3">3</p></button>
+        <button class="numbtn" id="btn4"><p class="numbers" id="4">4</p></button>
+        <button class="numbtn" id="btn5"><p class="numbers" id="5">5</p></button>
+        <button class="numbtn" id="btn6"><p class="numbers" id="6">6</p></button>
+        <button class="numbtn" id="btn7"><p class="numbers" id="7">7</p></button>
+        <button class="numbtn" id="btn8"><p class="numbers" id="8">8</p></button>
+        <button class="numbtn" id="btn9"><p class="numbers" id="9">9</p></button>
+        <button class="numbtn" id="btndot"><p class="numbers" id="dot">.</p></button>
+        <button id="btnequal"><p id="equal">=</p></button>
+        <button class="marks" id="btnmultiply"><p class="m" id="multiply">*</p></button>
+        <button class="marks" id="btndivide"><p class="m" id="divide">/</p></button>
+        <button class="marks" id="btnminer"><p class="m" id="miner">-</p></button>
+        <button class="marks" id="btnplus"><p class="m" id="plus">+</p></button>
+    </section>
+</section>
+<script>
+    let x = 0;
+    let tot = 0;
+    let plus = 0;
+    let y = 0;
+    let a = 0;
+    let b = 0;
+    let C = 0;
+    let d = 0;
+    document.getElementById("btn1").addEventListener("click", function () {
+        if (y != 0) {
+            if (x == 0) {
+                tot = tot - b;
+                a = 1 / y;
+                b = b + a;
+                tot = tot + b;
+                document.getElementById("text").innerText = tot;
+            } else {
+                plus = plus - d;
+                c = 1 / y;
+                d = d + c;
+                plus = plus + d;
+                document.getElementById("text").innerText = plus;
+            }
+            y = y * 10;
+        } else {
+            if (x == 0) {
+                tot = tot * 10 + 1;
+                document.getElementById("text").innerText = tot;
+            } else {
+                plus = plus * 10 + 1;
+                document.getElementById("text").innerText = plus;
+            }
+        }
+
+    })
+
+    document.getElementById("btn2").addEventListener("click", function () {
+        if (y != 0) {
+            if (x == 0) {
+                tot = tot - b;
+                a = 2 / y;
+                b = b + a;
+                tot = tot + b;
+                document.getElementById("text").innerText = tot;
+            } else {
+                plus = plus - d;
+                c = 2 / y;
+                d = d + c;
+                plus = plus + d;
+                document.getElementById("text").innerText = plus;
+            }
+            y = y * 10;
+        } else {
+            if (x == 0) {
+                tot = tot * 10 + 2;
+                document.getElementById("text").innerText = tot;
+            } else {
+                plus = plus * 10 + 2;
+                document.getElementById("text").innerText = plus;
+            }
+        }
+    })
+
+    document.getElementById("btn3").addEventListener("click", function () {
+        if (y != 0) {
+            if (x == 0) {
+                tot = tot - b;
+                a = 3 / y;
+                b = b + a;
+                tot = tot + b;
+                document.getElementById("text").innerText = tot;
+            } else {
+                plus = plus - d;
+                c = 3 / y;
+                d = d + c;
+                plus = plus + d;
+                document.getElementById("text").innerText = plus;
+            }
+            y = y * 10;
+        } else {
+            if (x == 0) {
+                tot = tot * 10 + 3;
+                document.getElementById("text").innerText = tot;
+            } else {
+                plus = plus * 10 + 3;
+                document.getElementById("text").innerText = plus;
+            }
+        }
+    })
+
+    document.getElementById("btn4").addEventListener("click", function () {
+        if (y != 0) {
+            if (x == 0) {
+                tot = tot - b;
+                a = 4 / y;
+                b = b + a;
+                tot = tot + b;
+                document.getElementById("text").innerText = tot;
+            } else {
+                plus = plus - d;
+                c = 4 / y;
+                d = d + c;
+                plus = plus + d;
+                document.getElementById("text").innerText = plus;
+            }
+            y = y * 10;
+        } else {
+            if (x == 0) {
+                tot = tot * 10 + 4;
+                document.getElementById("text").innerText = tot;
+            } else {
+                plus = plus * 10 + 4;
+                document.getElementById("text").innerText = plus;
+            }
+        }
+    })
+
+    document.getElementById("btn5").addEventListener("click", function () {
+        if (y != 0) {
+            if (x == 0) {
+                tot = tot - b;
+                a = 5 / y;
+                b = b + a;
+                tot = tot + b;
+                document.getElementById("text").innerText = tot;
+            } else {
+                plus = plus - d;
+                c = 5 / y;
+                d = d + c;
+                plus = plus + d;
+                document.getElementById("text").innerText = plus;
+            }
+            y = y * 10;
+        } else {
+            if (x == 0) {
+                tot = tot * 10 + 5;
+                document.getElementById("text").innerText = tot;
+            } else {
+                plus = plus * 10 + 5;
+                document.getElementById("text").innerText = plus;
+            }
+        }
+    })
+
+    document.getElementById("btn6").addEventListener("click", function () {
+        if (y != 0) {
+            if (x == 0) {
+                tot = tot - b;
+                a = 6 / y;
+                b = b + a;
+                tot = tot + b;
+                document.getElementById("text").innerText = tot;
+            } else {
+                plus = plus - d;
+                c = 6 / y;
+                d = d + c;
+                plus = plus + d;
+                document.getElementById("text").innerText = plus;
+            }
+            y = y * 10;
+        } else {
+            if (x == 0) {
+                tot = tot * 10 + 6;
+                document.getElementById("text").innerText = tot;
+            } else {
+                plus = plus * 10 + 6;
+                document.getElementById("text").innerText = plus;
+            }
+        }
+    })
+
+    document.getElementById("btn7").addEventListener("click", function () {
+        if (y != 0) {
+            if (x == 0) {
+                tot = tot - b;
+                a = 7 / y;
+                b = b + a;
+                tot = tot + b;
+                document.getElementById("text").innerText = tot;
+            } else {
+                plus = plus - d;
+                c = 7 / y;
+                d = d + c;
+                plus = plus + d;
+                document.getElementById("text").innerText = plus;
+            }
+            y = y * 10;
+        } else {
+            if (x == 0) {
+                tot = tot * 10 + 7;
+                document.getElementById("text").innerText = tot;
+            } else {
+                plus = plus * 10 + 7;
+                document.getElementById("text").innerText = plus;
+            }
+        }
+    })
+
+    document.getElementById("btn8").addEventListener("click", function () {
+        if (y != 0) {
+            if (x == 0) {
+                tot = tot - b;
+                a = 8 / y;
+                b = b + a;
+                tot = tot + b;
+                document.getElementById("text").innerText = tot;
+            } else {
+                plus = plus - d;
+                c = 8 / y;
+                d = d + c;
+                plus = plus + d;
+                document.getElementById("text").innerText = plus;
+            }
+            y = y * 10;
+        } else {
+            if (x == 0) {
+                tot = tot * 10 + 8;
+                document.getElementById("text").innerText = tot;
+            } else {
+                plus = plus * 10 + 8;
+                document.getElementById("text").innerText = plus;
+            }
+        }
+    })
+
+    document.getElementById("btn9").addEventListener("click", function () {
+        if (y != 0) {
+            if (x == 0) {
+                tot = tot - b;
+                a = 9 / y;
+                b = b + a;
+                tot = tot + b;
+                document.getElementById("text").innerText = tot;
+            } else {
+                plus = plus - d;
+                c = 9 / y;
+                d = d + c;
+                plus = plus + d;
+                document.getElementById("text").innerText = plus;
+            }
+            y = y * 10;
+        } else {
+            if (x == 0) {
+                tot = tot * 10 + 9;
+                document.getElementById("text").innerText = tot;
+            } else {
+                plus = plus * 10 + 9;
+                document.getElementById("text").innerText = plus;
+            }
+        }
+    })
+
+    document.getElementById("btn0").addEventListener("click", function () {
+        if (y != 0) {
+            y = y * 10;
+        } else {
+            if (x == 0) {
+                tot = tot * 10;
+                document.getElementById("text").innerText = tot;
+            } else {
+                plus = plus * 10;
+                document.getElementById("text").innerText = plus;
+            }
+        }
+    })
+
+    document.getElementById("btnC").addEventListener("click", function () {
+        a = 0;
+        b = 0;
+        c = 0;
+        d = 0;
+        x = 0;
+        y = 0;
+        plus = "";
+        tot = "";
+        document.getElementById("text").innerText = tot;
+    })
+
+    document.getElementById("btnequal").addEventListener("click", function () {
+        if (x == 1) {
+            tot = tot + plus;
+            document.getElementById("text").innerText = tot;
+        } else if (x == 2) {
+            tot = tot - plus;
+            document.getElementById("text").innerText = tot;
+        } else if (x == 3) {
+            tot = tot / plus;
+            document.getElementById("text").innerText = tot;
+        } else if (x == 4) {
+            tot = tot * plus;
+            document.getElementById("text").innerText = tot;
+        }
+        x = 0;
+        plus = 0;
+        y = 0;
+    })
+
+    document.getElementById("btnplus").addEventListener("click", function () {
+        x = 1;
+        y = 0;
+    })
+    document.getElementById("btnminer").addEventListener("click", function () {
+        x = 2;
+        y = 0;
+    })
+
+    document.getElementById("btndivide").addEventListener("click", function () {
+        x = 3;
+        y = 0;
+    })
+
+    document.getElementById("btnmultiply").addEventListener("click", function () {
+        x = 4;
+        y = 0;
+    })
+
+    document.getElementById("btndot").addEventListener("click", function () {
+        y = 10;
+    })
+</script>
+</body>
+</html>

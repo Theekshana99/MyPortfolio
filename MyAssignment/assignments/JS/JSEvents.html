@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Events in JS</title>
+    <style>
+
+
+    </style>
+</head>
+<body>
+<h1 id="h1">Institute of Java and Software Engineering</h1>
+
+<!--<button class="btn btn-danger" id="btn">Click</button>-->
+<!--<h2 id="hashan">Hashan</h2>-->
+
+<script src="../../assest/Bootstrap/js/jquery-3.7.0.min.js"></script>
+<script>
+    // let h2hashan = $("#hashan").text();
+    let h1Content = $("#h1").text();
+    let count=0;
+
+    setInterval(animateText,50);
+    function animateText(){
+        let content = h1Content.substring(0, count);
+        $("#h1").text(content);
+        count++;
+        if(count==h1Content.length){
+            count = 0;
+        }
+    }
+
+    // Events
+    // let timerID;
+    // window.addEventListener("mousemove", function (eData) {
+    //     console.log("Mouse is moving", eData.pageX,eData.pageY);
+    //     h1.style.opacity='1';
+    //     let x=eData.pageX;
+    //     let y=eData.pagey;
+    //     h1.style.position='absolute';
+    //     h1.style.left=eData.pageX+"px";
+    //     h1.style.top=eData.pageY+"px";
+    //
+    //     clearTimeout(timerID);
+    //
+    //     timerID=setTimeout(function (){
+    //         h1.style.opacity='0';
+    //     },3000)
+    // });
+    let timerID;
+    let h1=$('#h1');
+    $(window).mousemove(function (e){
+        h1.fadeIn(1000);
+        h1.css("position","relative");
+        h1.css("left", e.pageX+"px");
+        h1.css("top",e.pageY+"px");
+
+        clearTimeout(timerID);
+        timerID=setTimeout(function (){
+            h1.fadeOut(1000);
+        },3000)
+    })
+    //mema kramaya magin JQuary haraha java script thula thibena siyaluma methods apply kirimata heki we..
+    $("#h1").on("click",function (){
+
+    });
+    //elesa apply kala methods wala karya newethwima mema kramayen sidu karai
+    $("#h1").off("click",function (){
+
+    });
+
+    let x=10;
+    let y=50;
+
+    let student= {
+        name: "Hashan",
+        age: 23,
+        inARelationship: true,
+        printDetails : function (){
+            console.log(`My name is : ${this.name}`);
+            console.log(`My age is : ${this.age}`);
+            console.log(`Am I in a relationship ? ${this.inARelationship}`);
+        },
+        printDetails : function (x,y){
+            // console.log(x);
+            console.log(arguments);
+        }
+    }
+    // student.printDetails();
+    student.printDetails(x,y);
+</script>
+</body>
+</html>
